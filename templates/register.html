@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log in
+{% endblock %}
+
+{% block main %}
+    <style>
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+    </style>
+    <div class="login-container">
+        <form action ="/register" method="post">
+            <div class = "login-logo">
+                <img src="/static/DU2.png" alt="duck_logo">
+            </div>
+            <div class="input-group">
+                <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="username" placeholder="Username" type="text">
+            </div>
+            <div class="input-group">
+                <input class="form-control mx-auto w-auto" name="password" placeholder="Password" type="password">
+            </div>
+            <div class="input-group">
+                <input class="form-control mx-auto w-auto" name="confirmation" placeholder="Re-Password" type="password">
+            </div>
+            <button class="button" type="submit">Register</button>
+        </form>
+    </div>
+{% endblock %}

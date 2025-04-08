@@ -1,0 +1,103 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    review
+{% endblock %}
+
+{% block main %}
+     <style>
+        /* Styling for the selection box */
+        select {
+            width: 188px;
+            height: 25px;
+            text-align: left;
+            text-align-last: center;
+        }
+    </style>
+
+    <div class="review-submit">
+        <div class="review-header">CS50 Class Review</div>
+            <form action="/submit" method="post">
+                <div class="review-yeartaken">
+                    Class of "year":
+                    <div class="box-selection">
+                        <select name="year">
+                            <option disabled selected value="">Years</option>
+                            {% for year in years %}
+                                <option value="{{ year }}">{{ year }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="review-duration">
+                    Duration:
+                        <div class="box-selection">
+                        <select name="duration">
+                            <option disabled selected value="">Duration (month)</option>
+                            {% for month in durations %}
+                                <option value="{{ month }}">{{ month }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="review-rating">
+                    <div style="margin-top: 10px;">Workload:</div>
+                    <div class="stars" id="workload-stars">
+                        <a>⭐</a>
+                        <a>⭐</a>
+                        <a>⭐</a>
+                        <a>⭐</a>
+                        <a>⭐</a>
+                    </div>
+                    <input type="hidden" name="workload" id="workload-rating">
+
+                    <div style="margin-top: 10px;">Usefulness:</div>
+                    <div class="stars" id="usefulness-stars">
+                        <a>⭐</a>
+                        <a>⭐</a>
+                        <a>⭐</a>
+                        <a>⭐</a>
+                        <a>⭐</a>
+                    </div>
+                    <input type="hidden" name="usefulness" id="usefulness-rating">
+
+                    <div style="margin-top: 10px;">Quality:</div>
+                    <div class="stars" id="quality-stars">
+                        <a>⭐</a>
+                        <a>⭐</a>
+                        <a>⭐</a>
+                        <a>⭐</a>
+                        <a>⭐</a>
+                    </div>
+                    <input type="hidden" name="quality" id="quality-rating">
+                </div>
+                <div style="margin-top: 10px;">Comment:</div>
+                <div class="text-box">
+                    <textarea type="text" name="comment" rows="4" cols="50" placeholder="Type your thoughts here!"></textarea>
+                </div>
+            <button class="button" type="submit">Submit</button>
+        </form>
+    </div>
+
+    <!-- Star rating is referred and modified using this link: https://www.youtube.com/watch?v=dsRJTxieD4U -->
+    <script>
+        const categories = ["workload", "usefulness", "quality"];
+        categories.forEach(category => {
+            const stars = document.querySelectorAll(`#${category}-stars a`);
+            const ratingInput = document.getElementById(`${category}-rating`);
+            stars.forEach((star, clickedIdx) => {
+                star.addEventListener("click", () => {
+                    stars.forEach((otherStar, otherIdx) => {
+                        // Reset the rating system
+                        otherStar.classList.remove("active");
+                        if (otherIdx <= clickedIdx) {
+                            otherStar.classList.add("active");
+                        }
+                    });
+                    // Store the rating in the hidden input
+                    ratingInput.value = clickedIdx + 1;
+                });
+            });
+        });
+    </script>
+{% endblock %}

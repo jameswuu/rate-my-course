@@ -1,0 +1,151 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    index
+{% endblock %}
+
+{% block main %}
+<style>
+    .header-index{
+        padding-left:70px;
+        padding-top:20px;
+        padding-bottom:20px;
+        margin-left: 70px;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 500;
+        display: flex;
+    }
+    .left{
+        flex:1;
+        margin-left:70px;
+    }
+    .right{
+        padding-top:20px;
+        flex:1;
+        align:center;
+    }
+    .class-index{
+        font-size: 100px;
+        color: rgba(243, 215, 0);
+    }
+    .rate-index{
+        margin-left: 50px;
+        font-size: 16px;
+    }
+    .size-index{
+        font-size: 18px;
+    }
+    /* Codes is adjusted and modified using CS50 DUCK */
+        .bar-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .bar-wrapper {
+            display: flex;
+            font-weight: bold;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .bar {
+            height: 40px;
+            background-color: rgba(243, 215, 0);
+            text-align: center;
+            color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 45px;
+        }
+
+/* review's box */
+.body-index{
+    font-family: "Montserrat";
+    margin: 40px;
+    margin-left: 200px;
+    margin-right: 200px;
+    padding: 30px;
+    box-shadow: 0 4px 10px rgba(219, 224, 59);
+    font-size: 18px
+}
+.time{
+    text-align: right;
+}
+
+</style>
+    <div class="header-index">
+        <div class="left">
+            <div class="class-index">CS50</div>
+            <div class="rate-index">
+                <text style="font-size: 50px; color: rgba(243, 215, 0, 1);">{{ avg_rate }}</text>
+                /5.0
+            </div>
+            <div class="size-index">Overall Quality Based on: {{ size }} reviews</div>
+        </div>
+        <div class="right">
+            <div id="graph">
+                <div class="bar-container" id="bar-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- For loop to show all the reviews on the index page -->
+     {% for review in reviews %}
+        <div class="body-index">
+            <div class="time">{{ review.time }}</div>
+            <table>
+                <tr>
+                    <td class="col-1">Year of Completion:</td>
+                    <td class="col-2">{{ review.year }}</td>
+                </tr>
+                <tr>
+                    <td class="col-1">Length of the course:</td>
+                    <td class="col-2">{{ review.duration }} months</td>
+                </tr>
+                <tr>
+                    <td class="col-1">Workload:</td>
+                    <td class="col-2">{{ review.workload }}</td>
+                </tr>
+                <tr>
+                    <td class="col-1">Usefulness:</td>
+                    <td class="col-2">{{ review.usefulness }}</td>
+                </tr>
+                <tr>
+                    <td class="col-1">Quality:</td>
+                    <td class="col-2">{{ review.quality }}</td>
+                </tr>
+                <tr>
+                    <td class="col-1">Notes:</td>
+                    <td class="col-2">{{ review.comment }}</td>
+                </tr>
+            </table>
+        </div>
+    {% endfor %}
+
+<!-- Codes were modified and referred to CS50Duck -->
+    <script>
+        /* JavaScript to dynamically update the graph */
+        const data = {{table | tojson}};
+
+        const barContainer = document.getElementById('bar-container');
+
+        data.forEach(item => {
+            const barWrapper = document.createElement('div');
+            barWrapper.className = 'bar-wrapper';
+
+            const title = document.createElement('div');
+            title.innerText = item.label;
+            title.style.width = '50px';
+
+            const bar = document.createElement('div');
+            bar.className = 'bar';
+            bar.style.width = item.value + '10px';
+            bar.innerText = item.value;
+
+            barWrapper.appendChild(title);
+            barWrapper.appendChild(bar);
+            barContainer.appendChild(barWrapper);
+        });
+    </script>
+
+{% endblock %}

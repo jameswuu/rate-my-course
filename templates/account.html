@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Account
+{% endblock %}
+
+{% block main %}
+    <div class="account-details">
+        <h2>Account Details</h2>
+    </div>
+
+    <div class="account-body">
+        <div class="account-item-head">
+            Username:
+            <output class="form-control mx-auto w-auto">{{ session["username"] }}</output>
+        </div>
+
+        <div class="account-item-head">
+            University:
+            {% if not session["school"] %}
+            <form action="/school" method="post">
+                <div class="input-group">
+                    <input class="form-control" name="school" placeholder="Optional" type="text">
+                </div>
+                    <button class="button" type="submit">Add</button>
+            </form>
+            {% else %}
+                <output class="form-control mx-auto w-auto">{{ session["school"] }}</output>
+            {% endif %}
+        </div>
+
+        <div>
+            Change Password:
+            <form action="password" method="post">
+                <div class="password">
+                    <div class="input-group">
+                        <input class="form-control" name="old_password" placeholder="Old password" type="password">
+                    </div>
+                    <div class="input-group">
+                        <input class="form-control" name="new_password" placeholder="New Password" type="password">
+                    </div>
+                    <div class="input-group">
+                        <input class="form-control" name="renew_password" placeholder="New Password" type="password">
+                    </div>
+                    <button class="button" type="submit">Change</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

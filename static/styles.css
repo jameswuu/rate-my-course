@@ -1,0 +1,333 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+*{
+    box-sizing: boarder-box;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #24252A;
+    padding: 15px 5%;
+}
+
+.error{
+    background-color: #ffcccc;
+    color: #cc0000;
+    padding: 10px;
+}
+
+.success{
+    background-color: #b3ff99;
+    color: #39d105;
+    padding: 10px;
+}
+
+.nav-links, .button {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    color: #edf0f1;
+    text-decoration: none;
+}
+
+.logo{
+    cursor: pointer;
+    margin-right: auto;
+    width: 80px;
+}
+
+.nav-item{
+    display: inline-block;
+    padding: 0px 20px;
+    margin-top: 20px
+}
+
+.nav-link{
+    transition: all 0.3s ease 0s;
+}
+
+.nav-link:hover{
+    color: #0088a9
+}
+
+button{
+    margin-left: 20px;
+    padding:9px 25px;
+    background-color: rgba(243, 215, 0, 1);
+        /* 0,136,169,1); */
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+button:hover{
+    background-color: rgba(0,136,169,0.8)
+}
+
+
+
+
+
+/* CSS used for login and register page */
+/* Referened to ChatGpt for style recommendation */
+.login-logo {
+    margin-bottom: 20px;
+
+}
+.login-container {
+    background-color: white;
+    margin: 80px;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(219, 224, 59, 0.8);
+    width: 200%;
+    max-width: 350px;
+    text-align: center;
+}
+.input-group {
+    margin-bottom: 20px;
+}
+.register {
+    margin-top: 20px;
+    margin: left;
+}
+
+
+
+
+
+/* CSS used for account page */
+.account-details {
+    font-family: "Montserrat";
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(219, 224, 59, 0.8);
+    width: 200%;
+    max-width: 400px;
+}
+.account-body {
+    font-family: "Montserrat";
+    margin: 40px;
+    margin-left: 200px;
+    margin-right: 200px;
+    padding: 30px;;
+    box-shadow: 0 4px 10px rgba(219, 224, 59, 0.8);
+    max-width: 5000px;
+    font-size: 18px
+}
+.account-item-head{
+    margin-bottom: 20px;
+}
+
+
+
+
+
+/* CSS used for About Page */
+.background-1{
+    background-image: url('/static/background.jpg');
+    background-size: flex;
+    background-repeat: no-repeat;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.block-1{
+    display: flex;
+    text-align: center;
+}
+.b1-words{
+    flex: 1;
+    margin-left: 80px;
+}
+.title-1{
+    color: rgba(243, 215, 0);
+    font-size: 40px;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    margin-top: 40px;
+}
+.title-body-1{
+    text-align: left;
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    margin-top: 10px;
+}
+.block-pic-1{
+    flex: 1;
+}
+.img-1{
+    max-width: 450px;
+}
+.background-2{
+    background-size: flex;
+    background-repeat: no-repeat;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.b2-words{
+    flex: 1;
+    margin-right: 80px;
+}
+
+.img-2{
+    max-width: 300px;
+    border-radius: 60%;
+}
+
+.img-3{
+    max-width: 450px;
+}
+
+
+
+
+
+/* CSS used for Review Page */
+.review-submit{
+    font-family: "Montserrat";
+    margin: 40px;
+    margin-left: 200px;
+    margin-right: 200px;
+    padding: 30px;;
+    box-shadow: 0 4px 10px rgba(219, 224, 59);
+    font-size: 18px
+}
+.review-header{
+    font-family: "Montserrat";
+    align: left;
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.review-yeartaken{
+    font-size: 20px;
+}
+.review-duration{
+    margin-top:20px;
+    font-size: 20px;
+
+}
+.review-rating{
+    margin-top:20px
+}
+.box-selection{
+    font-size: 16px;
+    margin-top: 5px;
+}
+.text-box {
+    margin-bottom: 20px;
+}
+textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    resize: none; /* Allows users to resize the textarea vertically */
+}
+/* Styling for the Stars */
+.stars {
+    display: flex;
+}
+
+.stars.disabled {
+    pointer-events: none;
+}
+.stars a.active{
+    opacity: 100%
+}
+.stars a {
+    display: inline-block;
+    opacity: 50%;
+    cursor: pointer;
+    padding: 5px;
+    text-decoration: none;
+    outline: none;
+}
+.stars:hover a{
+    opacity: 100%;
+}
+.stars a:hover {
+    opacity: 100%;
+}
+.stars a:hover ~ a{
+    opacity:50%;
+}
+
+
+
+
+
+/* CSS used for index Page */
+.header-index{
+    padding-left:70px;
+    padding-top:20px;
+    padding-bottom:20px;
+    margin-left: 70px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    display: flex;
+}
+.left{
+    flex:1;
+    margin-left:70px;
+}
+.right{
+    padding-top:20px;
+    flex:1;
+    align:center;
+}
+.class-index{
+    font-size: 100px;
+    color: rgba(243, 215, 0);
+}
+.rate-index{
+    margin-left: 50px;
+    font-size: 16px;
+}
+.size-index{
+    font-size: 18px;
+}
+/* Codes is adjusted and modified using CS50 DUCK */
+    .bar-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .bar-wrapper {
+        display: flex;
+        font-weight: bold;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    .bar {
+        height: 40px;
+        background-color: rgba(243, 215, 0);
+        text-align: center;
+        color: black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 45px;
+    }
+
+/* review's box */
+.body-index{
+font-family: "Montserrat";
+margin: 40px;
+margin-left: 200px;
+margin-right: 200px;
+padding: 30px;;
+box-shadow: 0 4px 10px rgba(219, 224, 59);
+font-size: 18px
+}
+.time{
+text-align: right;
+}
